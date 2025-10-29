@@ -1,3 +1,4 @@
+
 class Item:
 
     def __init__(self, name, price, quantity):
@@ -8,7 +9,7 @@ class Item:
 
     def __str__(self):
         #display item info
-        pass
+        return f"Item: {self.name}, Price: {self.price}, Quantity: {self.quantity}"
 
     def __eq__(self, other):
         #compare items by name and price
@@ -58,15 +59,14 @@ class Inventory:
 
     def __str__(self):
         #inventory contents
-        pass
+        return f"{self.items}"
 
     def findItem(self, name):
         #find item by name
         for item in self.items:
             if item.name == name:
                 return item
-            else:
-                return None
+        return None
 
     def removeItem(self, name):
         #remove item by name
