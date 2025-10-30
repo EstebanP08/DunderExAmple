@@ -9,7 +9,7 @@ class Item:
 
     def __str__(self):
         #display item info
-        return f"Item: {self.name}, Price: {self.price}, Quantity: {self.quantity}"
+        return f"{self.name} - ${self.price:.2f} (x{self.quantity})"
 
     def __eq__(self, other):
         #compare items by name and price
@@ -56,6 +56,7 @@ class Inventory:
     def __add__(self, item):
         #add a new item 
         self.items.append(item)
+        return self
 
     def __str__(self):
         #inventory contents
@@ -83,3 +84,14 @@ class Inventory:
         for item in self.items:
             total += item.totalValue()
         return total
+    
+apple = Item("Apple", 1.00, 50)
+banana = Item("Banana", 0.50, 100)
+
+inventory = Inventory()
+inventory + apple + banana
+
+print(inventory)
+print("Total items:", len(inventory))
+print("Total value: $", inventory.totalInventoryValue())
+
